@@ -1,0 +1,22 @@
+/* list.css */
+.add-item-btn {
+    background-color: #28a745;
+    /* Green background */
+    color: white;
+    /* White text */
+    font-weight: bold;
+    /* Bold text */
+    padding: 10px 20px;
+    /* Padding for the button */
+    border-radius: 5px;
+    /* Rounded corners */
+    border: none;
+    /* Remove default border */
+    cursor: pointer;
+    /* Change cursor to pointer */
+}
+
+.add-item-btn:hover {
+    background-color: #218838;
+    /* Darker green on hover */
+}
