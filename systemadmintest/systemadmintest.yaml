@@ -59,20 +59,3 @@ spec:
             name: systemadmintest-svc 
             port:
               number: 80
-  tls:
-  - hosts:
-    - systemadmintest.kube-demo-1.clcreative.home  # เปลี่ยน host ตามที่ต้องการ
-    secretName: systemadmintest-tls-secret  # ชื่อของ TLS secret
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: systemadmintest-cert
-  namespace: systemadmintest
-spec:
-  secretName: systemadmintest-tls-secret
-  issuerRef:
-    name: ssl-issuer  # เปลี่ยนชื่อ issuer ถ้าจำเป็น
-    kind: ClusterIssuer
-  dnsNames:
-    - systemadmintest.kube-demo-1.clcreative.home  # เปลี่ยน host ตามที่ต้องการ
