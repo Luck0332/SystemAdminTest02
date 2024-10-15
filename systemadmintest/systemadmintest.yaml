@@ -52,7 +52,7 @@ spec:
   - host: "systemadmintest.kube-demo-1.clcreative.home"  # เปลี่ยน host ตามที่ต้องการ
     http:
       paths:
-      - path: /dashboard
+      - path: /
         pathType: Prefix
         backend:
           service:
