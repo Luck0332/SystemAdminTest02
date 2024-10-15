@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: systemadmintest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: systemadmintest-deploy
+  namespace: systemadmintest
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: systemadmintest
+  template:
+    metadata:
+      labels:
+        app: systemadmintest
+    spec:
+      containers:
+      - name: systemadmintest
+        image: nginx  # เปลี่ยนเป็นชื่อภาพจริงของคุณถ้ามี
+        ports:
+        - name: web
+          containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: systemadmintest-svc
+  namespace: systemadmintest
+  labels:
+    app: systemadmintest
+spec:
+  type: ClusterIP
+  ports:
+  - name:  http
+    port:  80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: systemadmintest
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: systemadmintest-ingress
+  namespace: systemadmintest
+spec:
+  rules:
+  - host: "systemadmintest.kube-demo-1.clcreative.home"  # เปลี่ยน host ตามที่ต้องการ
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: systemadmintest-svc 
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - systemadmintest.kube-demo-1.clcreative.home  # เปลี่ยน host ตามที่ต้องการ
+    secretName: systemadmintest-tls-secret  # ชื่อของ TLS secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: systemadmintest-cert
+  namespace: systemadmintest
+spec:
+  secretName: systemadmintest-tls-secret
+  issuerRef:
+    name: ssl-issuer  # เปลี่ยนชื่อ issuer ถ้าจำเป็น
+    kind: ClusterIssuer
+  dnsNames:
+    - systemadmintest.kube-demo-1.clcreative.home  # เปลี่ยน host ตามที่ต้องการ
