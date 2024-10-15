@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: SystemAdminTest
+  name: systemadmintest
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-repo'
+    repoURL: 'https://github.com/PekoyamaPeko02/SystemAdminTest02.git'
     targetRevision: HEAD
-    path: k8s
+    path: manifests
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: SystemAdminTest
+    namespace: systemadmintest
   syncPolicy:
     automated:
       prune: true
