@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: systemadmintest
-        image: <your_docker_image> # ใส่ URL ของ Docker Image ที่สร้างขึ้น
+        image: mydockerhubusername/systemadmintest:latest # ใส่ URL ของ Docker Image ที่สร้างขึ้น
         ports:
         - containerPort: 80
 
