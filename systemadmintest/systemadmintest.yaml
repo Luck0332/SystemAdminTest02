@@ -49,7 +49,7 @@ metadata:
   namespace: systemadmintest
 spec:
   rules:
-    - host: "systemadmintest.kube-demo-1.clcreative.home" # เปลี่ยน host ตามที่ต้องการ
+    - host: "systemadmintest.test" # เปลี่ยน host ตามที่ต้องการ
       http:
         paths:
           - path: /
