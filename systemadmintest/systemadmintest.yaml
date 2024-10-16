@@ -11,7 +11,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app: systemadmintest
   template:
     metadata:
@@ -19,11 +19,11 @@ spec:
         app: systemadmintest
     spec:
       containers:
-      - name: systemadmintest
-        image: nginx  # เปลี่ยนเป็นชื่อภาพจริงของคุณถ้ามี
-        ports:
-        - name: web
-          containerPort: 80
+        - name: systemadmintest
+          image: nginx # เปลี่ยนเป็นชื่อภาพจริงของคุณถ้ามี
+          ports:
+            - name: web
+              containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -33,12 +33,12 @@ metadata:
   labels:
     app: systemadmintest
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
-  - name:  http
-    port:  80
-    targetPort: 80
-    protocol: TCP
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
   selector:
     app: systemadmintest
 ---
@@ -49,13 +49,13 @@ metadata:
   namespace: systemadmintest
 spec:
   rules:
-  - host: "systemadmintest.kube-demo-1.clcreative.home"  # เปลี่ยน host ตามที่ต้องการ
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: systemadmintest-svc 
-            port:
-              number: 80
+    - host: "systemadmintest.kube-demo-1.clcreative.home" # เปลี่ยน host ตามที่ต้องการ
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: systemadmintest-svc
+                port:
+                  number: 80
