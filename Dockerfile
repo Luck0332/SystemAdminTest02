@@ -1,20 +1,27 @@
-# ใช้ Node.js เวอร์ชัน 16 เป็น base image
-FROM node:16
+# ใช้ Node.js เป็น Base Image
+FROM node:14 AS build
 
-# ตั้งค่า directory สำหรับโค้ด
+# ตั้งค่าโฟลเดอร์ทำงาน
 WORKDIR /app
 
-# คัดลอก package.json และไฟล์ dependencies อื่นๆ
-COPY package*.json ./
-
-# ติดตั้ง dependencies
+# คัดลอกไฟล์ package.json และติดตั้ง dependencies
+COPY package.json ./
 RUN npm install
 
-# คัดลอกไฟล์โค้ดทั้งหมดไปยัง /app
+# คัดลอกโค้ดแอปพลิเคชันและสร้าง
 COPY . .
+RUN npm run build
 
-# เปิดพอร์ต 3000 สำหรับแอปพลิเคชัน
-EXPOSE 3000
+# ใช้ NGINX เป็น Base Image สำหรับให้บริการไฟล์
+FROM nginx:alpine
 
-# คำสั่งสำหรับรันแอปพลิเคชัน
-CMD ["npm", "start"]
+# คัดลอกไฟล์ที่สร้างจากขั้นตอนก่อนหน้าไปที่ NGINX
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# ตั้งค่า NGINX
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# เปิดพอร์ตที่ NGINX ใช้งาน
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

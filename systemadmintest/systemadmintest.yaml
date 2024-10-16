@@ -19,26 +19,23 @@ spec:
         app: systemadmintest
     spec:
       containers:
-        - name: systemadmintest
-          image: nginx # เปลี่ยนเป็นชื่อภาพจริงของคุณถ้ามี
-          ports:
-            - name: web
-              containerPort: 80
+      - name: systemadmintest
+        image: <your_docker_image> # ใส่ URL ของ Docker Image ที่สร้างขึ้น
+        ports:
+        - containerPort: 80
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: systemadmintest-svc
   namespace: systemadmintest
-  labels:
-    app: systemadmintest
 spec:
   type: NodePort
   ports:
-    - name: http
-      port: 80
-      targetPort: 80
-      protocol: TCP
+  - port: 80
+    targetPort: 80
+    nodePort: 30444
   selector:
     app: systemadmintest
 ---
@@ -48,17 +45,16 @@ metadata:
   name: systemadmintest-ingress
   namespace: systemadmintest
   annotations:
-    kubernetes.io/ingress.class: "nginx"  # ปรับปรุงให้ใช้ ingressClassName แทน
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: "nginx"  # เพิ่มการตั้งค่านี้
   rules:
-    - host: systemadmintest.test
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: systemadmintest-svc
-                port:
-                  number: 80
+  - host: systemadmintest.test
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: systemadmintest-svc
+            port:
+              number: 80
