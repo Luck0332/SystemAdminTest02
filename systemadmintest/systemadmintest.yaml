@@ -19,10 +19,15 @@ spec:
         app: systemadmintest
     spec:
       containers:
-      - name: systemadmintest
-        image: <your_docker_image> # ใส่ URL ของ Docker Image ที่สร้างขึ้น
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:latest
+          volumeMounts:
+            - name: nginx-content
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: nginx-content
+          configMap:
+            name: my-nginx-content
 
 ---
 apiVersion: v1
@@ -30,12 +35,15 @@ kind: Service
 metadata:
   name: systemadmintest-svc
   namespace: systemadmintest
+  labels:
+    app: systemadmintest
 spec:
   type: NodePort
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30444
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
   selector:
     app: systemadmintest
 ---
