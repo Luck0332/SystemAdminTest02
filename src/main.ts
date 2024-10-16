@@ -7,9 +7,9 @@ import Login from './pages/Login.vue';
 
 
 const routes = [
-  { path: '/', component: Login },
+  { path: '/', component: Dashboard  },
   { path: '/login', component: Login },
-  { path: '/dashboard', component: Dashboard },
+  // { path: '/dashboard', component: Dashboard },
   // { path: '/list', component: List },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: Dashboard }, // เส้นทางสำหรับ 404
 ];

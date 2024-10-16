@@ -5,6 +5,7 @@ import Footer from '../components/layout/Footer.vue';
 import Graph from '../components/graph.vue';
 
 
+
 </script>
 
 <template>
