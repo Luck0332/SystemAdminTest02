@@ -1,25 +1,23 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-// import './style.css'
-import App from './App.vue'
-import { createWebHistory, createRouter } from 'vue-router'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
+import { createWebHistory, createRouter } from 'vue-router';
+import Dashboard from './pages/Dashboard.vue';
+import Login from './pages/Login.vue';
 
-const pinia = createPinia()
-import Dashboard from './pages/Dashboard.vue'
-import Login from './pages/Login.vue'
-import List from './pages/List.vue'
 
 const routes = [
   { path: '/', component: Login },
   { path: '/login', component: Login },
   { path: '/dashboard', component: Dashboard },
-  { path: '/list', component: List },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: Dashboard },
-]
+  // { path: '/list', component: List },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: Dashboard }, // เส้นทางสำหรับ 404
+];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(), // ใช้ History Mode
   routes,
-})
+});
 
-createApp(App).use(pinia).use(router).mount('#app')
+const pinia = createPinia();
+createApp(App).use(pinia).use(router).mount('#app');
