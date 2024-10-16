@@ -48,10 +48,11 @@ metadata:
   name: systemadmintest-ingress
   namespace: systemadmintest
   annotations:
-    kubernetes.io/ingress.class: "nginx"  # เพิ่มบรรทัดนี้
+    kubernetes.io/ingress.class: "nginx"  # ปรับปรุงให้ใช้ ingressClassName แทน
 spec:
+  ingressClassName: "nginx"  # เพิ่มการตั้งค่านี้
   rules:
-    - host: "systemadmintest.test"  # เปลี่ยน host ตามที่ต้องการ
+    - host: systemadmintest.test
       http:
         paths:
           - path: /
