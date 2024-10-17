@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +10,29 @@
 <body>
   <h1>Welcome to My NGINX Page!</h1>
   <p>This is a sample page served by NGINX in Kubernetes.</p>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Vue App</title>
+</head>
+
+<body>
+  <div id="app">
+    <router-view></router-view> <!-- จุดที่ Vue Router จะแสดง component -->
+  </div>
+
+  <!-- Vue และ Vue Router ผ่าน CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.12/dist/vue-router.global.js"></script>
+
+  <!-- Script สำหรับการโหลดไฟล์ Vue -->
+  <script type="module" src="src/main.ts"></script>
 </body>
 
 </html>
