@@ -7,7 +7,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: systemadmintest-deploy
-  namespace: argocd
+  namespace: systemadmintest
 spec:
   replicas: 1
   selector:
@@ -34,7 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: systemadmintest-svc
-  namespace: argocd
+  namespace: systemadmintest
   labels:
     app: systemadmintest
 spec:
@@ -51,11 +51,11 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: systemadmintest-ingress
-  namespace: argocd
+  namespace: systemadmintest
   annotations:
-    kubernetes.io/ingress.class: "nginx" # ปรับปรุงให้ใช้ ingressClassName แทน
+    kubernetes.io/ingress.class: "nginx"  # ปรับปรุงให้ใช้ ingressClassName แทน
 spec:
-  ingressClassName: "nginx" # เพิ่มการตั้งค่านี้
+  ingressClassName: "nginx"  # เพิ่มการตั้งค่านี้
   rules:
     - host: systemadmintest.test
       http:
