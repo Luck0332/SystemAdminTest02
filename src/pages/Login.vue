@@ -14,7 +14,7 @@ const store = useCounterStore()
         <div class="login-logo"> <a href="javascript::void()"><b>Admin</b>LTE</a> </div> <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">http://172.26.128.1:32108/</p>
                 <h1>count: {{store.count}}</h1>
                 <form action="javascript::void()" method="post">
                     
