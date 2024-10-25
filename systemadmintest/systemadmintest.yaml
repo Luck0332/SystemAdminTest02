@@ -25,13 +25,8 @@ spec:
         image: node:14-alpine
         ports:
         - containerPort: 3000
-        volumeMounts:
-        - name: crud-source
-          mountPath: /app
         command: ["npm", "start"]
-      volumes:
-      - name: crud-source
-        emptyDir: {}
+
 ---
 apiVersion: v1
 kind: Service
