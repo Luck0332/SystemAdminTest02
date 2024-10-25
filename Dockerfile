@@ -1,7 +1,6 @@
 # ใช้ Node.js เป็น Base Image
 FROM node:18-alpine AS build
 
-
 # ตั้งค่าโฟลเดอร์ทำงาน
 WORKDIR /app
 
@@ -25,6 +24,5 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # เปิดพอร์ตที่ NGINX ใช้งาน
 EXPOSE 80
 
-
-
+# รัน NGINX
 CMD ["nginx", "-g", "daemon off;"]
