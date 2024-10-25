@@ -74,7 +74,7 @@ spec:
   source:
     repoURL: 'https://github.com/PekoyamaPeko02/SystemAdminTest02.git'
     targetRevision: HEAD
-    path: manifests
+    path: systemadmintest/systemadmintest
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: systemadmintest  # เปลี่ยน namespace ให้ตรงกับแอปพลิเคชัน
