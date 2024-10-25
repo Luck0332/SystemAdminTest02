@@ -25,4 +25,6 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # เปิดพอร์ตที่ NGINX ใช้งาน
 EXPOSE 80
 
+
+
 CMD ["nginx", "-g", "daemon off;"]
