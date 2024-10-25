@@ -45,7 +45,7 @@ import Graph from '../components/graph.vue';
                                 <div class="small-box text-bg-primary">
                                     <div class="inner">
                                         <h3>150</h3>
-                                        <p>New Orders</p>
+                                        <p>แก้ได้ยังคับพี่เหนื่อยละ</p>
                                     </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path
