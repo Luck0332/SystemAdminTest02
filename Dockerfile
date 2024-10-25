@@ -1,5 +1,6 @@
 # ใช้ Node.js เป็น Base Image
-FROM node:14 AS build
+FROM node:18-alpine AS build
+
 
 # ตั้งค่าโฟลเดอร์ทำงาน
 WORKDIR /app
@@ -13,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # ใช้ NGINX เป็น Base Image สำหรับให้บริการไฟล์
-FROM nginx:alpine
+FROM nginx:1-alpine-slim
 
 # คัดลอกไฟล์ที่สร้างจากขั้นตอนก่อนหน้าไปที่ NGINX
 COPY --from=build /app/dist /usr/share/nginx/html
