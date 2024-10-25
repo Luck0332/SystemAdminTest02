@@ -31,7 +31,7 @@ import Graph from '../components/graph.vue';
                                 <ol class="breadcrumb float-sm-end">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Dashboard
+                                        แก้ได้ยังคับพี่เหนื่อยละ
                                     </li>
                                 </ol>
                             </div>
