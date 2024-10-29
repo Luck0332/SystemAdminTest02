@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: crud-container
-        image: argoproj/argo:latest
+        image: argo:latest
         ports:
         - containerPort: 80
 
