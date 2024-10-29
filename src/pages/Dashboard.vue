@@ -31,7 +31,7 @@ import Graph from '../components/graph.vue';
                                 <ol class="breadcrumb float-sm-end">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        แก้ได้ยังคับพี่เหนื่อยละ
+                                        Test
                                     </li>
                                 </ol>
                             </div>
@@ -44,8 +44,8 @@ import Graph from '../components/graph.vue';
                             <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 1-->
                                 <div class="small-box text-bg-primary">
                                     <div class="inner">
-                                        <h3>ได้แล้วจริงอะ</h3>
-                                        <p>แก้ได้ยังคับพี่เหนื่อยละ</p>
+                                        <h3>Test</h3>
+                                        <p>Test</p>
                                     </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path
@@ -59,7 +59,7 @@ import Graph from '../components/graph.vue';
                             <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 2-->
                                 <div class="small-box text-bg-success">
                                     <div class="inner">
-                                        <h3>แง่งๆๆๆ<sup class="fs-5"></sup></h3>
+                                        <h3>Test<sup class="fs-5"></sup></h3>
                                         <p>Bounce Rate</p>
                                     </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
