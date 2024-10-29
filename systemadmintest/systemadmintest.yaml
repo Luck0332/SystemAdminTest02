@@ -7,7 +7,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: systemadmintest
-  namespace: systemadmintest
+  namespace: systemadmintest01
   labels:
     app: systemadmintest
 spec:
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: systemadmintest-service
-  namespace: systemadmintest
+  namespace: systemadmintest01
 spec:
   selector:
     app: systemadmintest
@@ -67,7 +67,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: systemadmintest
-  namespace: systemadmintest
+  namespace: systemadmintest01
 spec:
   project: default
   source:
@@ -76,7 +76,7 @@ spec:
     path: systemadmintest/systemadmintest
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: systemadmintest
+    namespace: systemadmintest01
   syncPolicy:
     automated:
       prune: true
