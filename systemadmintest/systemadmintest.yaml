@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: crud-container
-        image: systemadmintest
+        image: argo
         ports:
         - containerPort: 80
 
