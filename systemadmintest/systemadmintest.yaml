@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: crud-container
-        image: systemadmintest:latest
+        image: systemadmintest
         ports:
         - containerPort: 80
 
